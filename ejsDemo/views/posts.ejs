@@ -1,3 +1,5 @@
+<% include partials/header%>
+  
 <h2>The Posts Page</h2>
 
 <% posts.forEach(( post ) => { %>
@@ -5,3 +7,5 @@
     <%= post.title %> - <strong><%= post.author %></strong>
   </li>
 <% }) %>
+
+<% include partials/footer%>
