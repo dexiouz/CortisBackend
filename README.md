@@ -8,3 +8,5 @@ API, application programme interface is an interface for codes, computers to tal
 
 htpps:iftt.com
 programmableweb.com
+use req.query when sending through a get method
+use req.body to retrieve data in a form with a post method
