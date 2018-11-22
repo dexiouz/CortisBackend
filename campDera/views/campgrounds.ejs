@@ -1,12 +1,25 @@
-<% include partials/header%>
-
-<h1>This is the camp grounds page</h1>
-
-<% campgrounds.forEach((camp)=>{ %>
-  <h4><%= camp.name %></h4>
-  <img  style="width: 600px; height:300px" src="<%= camp.image %>"/>
-<% }) %>
+<% include partials/header %>
+  <div class="container">
 
 
+    <header class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Chidera's Camp</h1>
+        <p>Check our beautiful camp grounds from all over the world</p>
+        <p>
+          <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add new camp ground</a>
+        </p>
+      </div>
+    </header>
 
-<% include partials/footer%>
+    <div class="row">
+      <% campgrounds.forEach((camp)=>{ %>
+        <div class="col-md-3 col-sm-6">
+        <h4><%= camp.name %></h4>
+        <img style="width: 600px; height:300px" src="<%= camp.image %>" />
+      </div>
+        <% }) %>
+    </div>
+  </div>
+
+  <% include partials/footer%>
