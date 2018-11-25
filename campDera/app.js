@@ -39,7 +39,7 @@ app.post( '/campgrounds', ( req, res)=> {
   let newCamp = { name, image, };
 
   console.log(image)
-  campgrounds.push( newCamp );
+  campgrounds.unshift( newCamp );
   res.redirect("/campgrounds")
   res.send( "YOU HIT THE POST ROUTE")
 });
