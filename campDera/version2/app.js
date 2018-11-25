@@ -43,7 +43,7 @@ app.get( '/campgrounds', ( req, res )=> {
     if(err){
       console.log( err )
     } else {
-      res.render( "campgrounds", { campgrounds: allCampgrounds })
+      res.render( "index", { campgrounds: allCampgrounds })
     }
   })
 });
@@ -51,10 +51,11 @@ app.get( '/campgrounds', ( req, res )=> {
 //CREARE -- ADD NEW CAMPGROUND TO DB
 app.post( '/campgrounds', ( req, res)=> {
   // get data from form and add to newCamp object
-  let name = req.body.name;
-  let incomingImage = req.body.image;
-  let image = `/assets/${incomingImage}`
-  let newCamp = { name, image };
+  let name          = req.body.name,
+   incomingImage    = req.body.image,
+   image            = `/assets/${incomingImage}`,
+   description      = req.body.description,
+   newCamp          = { name, image,description };
   
   // create new camp ground and save to db
   Campground.create(newCamp, function( err, newlyCreated){
@@ -74,8 +75,14 @@ app.get( "/campgrounds/new", ( req, res) => {
 
 // SHOW A CAMPGROUND USING ITS ID
 app.get("/campgrounds/:id", ( req, res) => {
-  res.send("THIS WILL BE THE SHOw PAGE ONE DAY")
-})
+  Campground.findById( req.params.id, (err, foundCampground) => {
+    if(err){
+      console.log( err)
+    } else {
+      res.render("show", {campground: foundCampground})
+    }
+  })
+}); 
 
 app.listen( 3000, ()=>{
   console.log( "The camp server has started" )
