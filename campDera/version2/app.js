@@ -3,7 +3,7 @@ let express    = require("express"),
  mongoose     = require("mongoose"),
  bodyparser   = require( "body-parser" );
 
- mongoose.connect("mongodb://localhost:/campDera")
+mongoose.connect("mongodb://localhost:/campDera")
 app.use( bodyparser.urlencoded( { extended: true } ));
 app.use( express.static("public"));
 app.set("view engine", "ejs");
@@ -48,17 +48,17 @@ app.get( '/campgrounds', ( req, res )=> {
   })
 });
 
-//CREARE -- ADD NEW CAMPGROUND TO DB
+//CREATE -- ADD NEW CAMPGROUND TO DB
 app.post( '/campgrounds', ( req, res)=> {
   // get data from form and add to newCamp object
-  let name          = req.body.name,
+let name            = req.body.name,
    incomingImage    = req.body.image,
    image            = `/assets/${incomingImage}`,
    description      = req.body.description,
-   newCamp          = { name, image,description };
+   newCamp          = { name, image, description };
   
   // create new camp ground and save to db
-  Campground.create(newCamp, function( err, newlyCreated){
+  Campground.create( newCamp, function( err, newlyCreated ){
     if(err){
       console.log(err)
     } else {
