@@ -39,7 +39,7 @@ let express     = require("express"),
         if(err){
           console.log("there was an error", err)
         } else {
-          console.log(blogs)
+          // console.log(blogs)
           res.render("index", {blogs})
         }
       })
