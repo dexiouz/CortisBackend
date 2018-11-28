@@ -30,8 +30,19 @@ let express     = require("express"),
     // })
 
     // RESTFUL ROUTES
+    app.get( '/', ( req, res )=> {
+      res.redirect("/blogs")
+    });
+
     app.get( '/blogs', ( req, res )=> {
-          res.render( "index" )
+      Blog.find({}, (err, blogs)=>{
+        if(err){
+          console.log("there was an error", err)
+        } else {
+          console.log(blogs)
+          res.render("index", {blogs})
+        }
+      })
     });
 
 

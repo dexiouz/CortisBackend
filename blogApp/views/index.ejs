@@ -1,1 +1,10 @@
 <h1>INDEX PAGE</h1>
+
+<%blogs.forEach((blog)=>{%>
+  <div>
+    <h2><%=blog.title%></h2>
+    <img style="width: 30%; height: 40%" src="/assets/<%=blog.image%>.jpg" alt="">
+    <span><%=blog.Date%></span>
+    <p><%=blog.body%></p>
+  </div>
+<% }) %>

@@ -11,6 +11,7 @@ programmableweb.com
 use req.query when sending through a get method
 use req.body to retrieve data in a form with a post method
 
+REST stands for representational state transfer. 
 REST is just a pattern for defining our routes.
 
 To create something we need two routes. First we need the form route that shows us the form and then we need a place for the form to submit. Same thing goes for edit, we need a form where to edit and a place for the form to submit.

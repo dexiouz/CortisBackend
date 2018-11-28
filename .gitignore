@@ -1,3 +1,5 @@
 /node_modules
 /node_modules.tar.gz
 yarn-error.log*
+/fontawesome-free-5.0.13
+semantic
