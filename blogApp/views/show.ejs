@@ -1,0 +1,16 @@
+<% include partials/header%>
+  <div class="ui main text container segment">
+    <div class="ui huge header"> <%=foundBlog.title%></div>
+    <div class="ui top attached ">
+      <div class="item">
+        <img class="ui centered rounded image" style="width: 40%; height: 40%" src="/assets/<%=foundBlog.image%>" alt="">
+      </div>
+      <div class="content">
+        <span><%=foundBlog.Date.toDateString()%></span>
+      </div>
+      <div class="description">
+        <p><%=foundBlog.body%></p>
+      </div>
+    </div>
+  </div>
+<% include partials/footer%>

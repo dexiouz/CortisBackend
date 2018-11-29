@@ -22,18 +22,12 @@ let express     = require("express"),
     // COMPILE INTO A MODEL
     let Blog = mongoose.model("Blog", blogSchema );
 
-    // CREATE A BLOG
-    // Blog.create({
-    //   title: "Test blog",
-    //   image: "mbuntu-1",
-    //   body: "This is a new blog"
-    // })
-
     // RESTFUL ROUTES
     app.get( '/', ( req, res )=> {
       res.redirect("/blogs")
     });
 
+    //INDEX ROUTE
     app.get( '/blogs', ( req, res )=> {
       Blog.find({}, (err, blogs)=>{
         if(err){
@@ -45,10 +39,32 @@ let express     = require("express"),
       })
     });
 
+    //NEW ROUTE
+    app.get("/blogs/new", ( req,res )=>{
+      res.render("new");
+    });
 
+    //CREATE ROUTE
+    app.post("/blogs", (req,res)=>{
+      Blog.create(req.body.blog, (err,newBlog)=>{
+        if(err){
+          res.render("new")
+        }  else {
+          res.redirect("/blogs")
+        }
+      })
+    });
 
-
-
+    //SHOW A BLOG BY ITS ID
+    app.get( "/blogs/:id", (req, res)=> {
+      Blog.findById( req.params.id, function( err, foundBlog){
+        if( err ){
+          res.redirect("/blogs")
+        } else {
+          res.render("show", { foundBlog})
+        }
+      })
+    })
 
 
 

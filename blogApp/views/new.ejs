@@ -1,1 +1,21 @@
-<h2>hello</h2>
+<% include partials/header%>
+  <div class="ui main text container segment">
+    <div class="ui huge header"> New Blog </div>
+
+    <form clsss="ui form" action="/blogs" method="POST">
+      <div class="field">
+        <label for="">Title</label>
+        <input type="text" name="blog[title]" placeholder="title">
+      </div>
+      <div class="field">
+        <label for="">Image</label>
+        <input type="file" name="blog[image]" placeholder="image">
+      </div>
+      <div class="field">
+        <label for="">Blog Post</label>
+        <textarea name="blog[body]"></textarea>
+      </div>
+      <input class="ui violet big inverted button" type="submit" >
+    </form>
+  </div>
+<% include partials/footer%>

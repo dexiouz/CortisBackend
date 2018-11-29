@@ -5,8 +5,9 @@
 <%blogs.forEach((blog)=>{%>
   <div>
     <h2><%=blog.title%></h2>
-    <img style="width: 30%; height: 40%" src="/assets/<%=blog.image%>.jpg" alt="">
+    <img style="width: 30%; height: 40%" src="/assets/<%=blog.image%>" alt="">
     <span><%=blog.Date%></span>
-    <p><%=blog.body%></p>
+    <p><%-blog.body.substring(0,100)%>...</p>
+    <a href="/blogs/<%=blog._id%>">Read More</a>
   </div>
 <% }) %>
