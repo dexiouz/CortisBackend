@@ -64,6 +64,22 @@ let express     = require("express"),
           res.render("show", { foundBlog})
         }
       })
+    });
+
+    // EDIT ROUTE
+    app.get( "/blogs/:id/edit", ( req, res)=>{
+      Blog.findById( req.params.id, ( err, foundBlog )=>{
+        if( err ){
+          res.redirect("/blogs")
+        } else {
+          res.render("edit", {foundBlog})
+        }
+      })
+    });
+
+    // UPDATE ROUTE
+    app.put( "/blogs/:id", ( req, res)=>{
+      res.send("the put")
     })
 
 
