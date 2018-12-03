@@ -1,6 +1,7 @@
 let express     = require("express"),
     bodyparser  = require("body-parser"),
     mongoose    = require("mongoose"),
+    methodOverride = require("method-override")
     app         = express();
 
     // APP CONFIG
@@ -8,6 +9,7 @@ let express     = require("express"),
     app.set("view engine", "ejs");
     app.use(express.static("public"));
     app.use( bodyparser.urlencoded({ extended: true }));
+    app.use(methodOverride("_method"))
 
 
     // MONGOOSE/MODEL CONFIG
@@ -61,6 +63,8 @@ let express     = require("express"),
         if( err ){
           res.redirect("/blogs")
         } else {
+          console.log(foundBlog)
+          console.log(foundBlog.image)
           res.render("show", { foundBlog})
         }
       })
@@ -79,7 +83,13 @@ let express     = require("express"),
 
     // UPDATE ROUTE
     app.put( "/blogs/:id", ( req, res)=>{
-      res.send("the put")
+      Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog)=>{
+        if( err ){
+          console.log( err )
+        } else {
+          res.redirect(`/blogs/${updatedBlog._id}`)
+        }
+      })
     })
 
 

@@ -11,6 +11,11 @@
       <div class="description">
         <p><%=foundBlog.body%></p>
       </div>
+      <form class="ui form" action="/blogs/<%=foundBlog.id%>/edit">
+        <div class="field">
+          <input class="ui violet big inverted button center" value="edit" type="submit" >
+         </div>
+      </form>
     </div>
   </div>
 <% include partials/footer%>

@@ -2,20 +2,34 @@
   <div class="ui main text container segment">
     <div class="ui huge header"> Edit <%=foundBlog.title%> </div>
 
-    <form clsss="ui form" action="/blogs/<%=foundBlog._id%>" method="PUT">
+    <form class="ui form" action="/blogs/<%=foundBlog._id%>?_method=PUT" method="POST">
       <div class="field">
-        <label for="">Title</label>
+        <label>Title</label>
         <input type="text" name="blog[title]" value="<%=foundBlog.title%>">
       </div>
       <div class="field">
-        <label for="">Image</label>
-        <input type="file" name="blog[image]"  value="<%=foundBlog.image%>">
+        <label>Image</label>
+        <input type="file" name="blog[image]" placeholder="helllooo" >Select a new image or yet still select "<%=foundBlog.image%>" which is the default image else no image will be displayed.</input>
       </div>
+
       <div class="field">
-        <label for="">Blog Post</label>
-        <textarea name="blog[body]"><%=foundBlog.body%></textarea>
+       <label for="">Blog Post</label>
+       <textarea name="blog[body]" id="" cols="30" rows="10"><%=foundBlog.body%></textarea>
       </div>
       <input class="ui violet big inverted button" type="submit" >
     </form>
   </div>
 <% include partials/footer%>
+
+
+
+
+
+
+
+
+
+
+
+
+
