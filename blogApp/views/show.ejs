@@ -3,7 +3,7 @@
     <div class="ui huge header"> <%=foundBlog.title%></div>
     <div class="ui top attached ">
       <div class="item">
-        <img class="ui centered rounded image" style="width: 40%; height: 40%" src="/assets/<%=foundBlog.image%>" alt="">
+        <img class="ui centered rounded image" style="width: 60%; height: 50%" src="/assets/<%=foundBlog.image%>" alt="">
       </div>
       <div class="content">
         <span><%=foundBlog.Date.toDateString()%></span>
@@ -11,10 +11,12 @@
       <div class="description">
         <p><%=foundBlog.body%></p>
       </div>
-      <form class="ui form" action="/blogs/<%=foundBlog.id%>/edit">
+      <form class="ui form" action="/blogs/<%=foundBlog.id%>/edit" method="POST
+        ">
         <div class="field">
-          <input class="ui violet big inverted button center" value="edit" type="submit" >
-         </div>
+         <a class="ui green button" href="/blogs/<%=foundBlog.id%>/edit">Edit</a>
+      <form action="/blogs/<%=foundBlog._id%>?_method=DELETE" method="POST" class="ui form">
+        <button class="ui red button" >Delete</button>
       </form>
     </div>
   </div>

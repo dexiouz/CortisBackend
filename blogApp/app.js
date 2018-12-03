@@ -63,8 +63,6 @@ let express     = require("express"),
         if( err ){
           res.redirect("/blogs")
         } else {
-          console.log(foundBlog)
-          console.log(foundBlog.image)
           res.render("show", { foundBlog})
         }
       })
@@ -84,14 +82,23 @@ let express     = require("express"),
     // UPDATE ROUTE
     app.put( "/blogs/:id", ( req, res)=>{
       Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog)=>{
-        if( err ){
+        err ?
           console.log( err )
-        } else {
+            :
           res.redirect(`/blogs/${updatedBlog._id}`)
-        }
       })
     })
 
+
+    // DELETE ROUTE
+    app.delete( "/blogs/:id", ( req, res ) => {
+      Blog.findByIdAndRemove( req.params.id, ( err) => {
+        err ? 
+         res.redirect("/blogs") 
+        :
+         res.redirect("/blogs")
+      })
+    })
 
 
 
