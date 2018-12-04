@@ -23,3 +23,11 @@ Express sanitizer removes scripts.
 
 
 Folder 9 video 1
+
+**Introduction to Associations**
+This allows us to have multiple collections of data that are related to one another.
+Consider a models
+User
+Photos, Comments etc
+
+A comment can be related or associated to a photo which is also associated to a User. 
