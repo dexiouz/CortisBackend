@@ -1,13 +1,30 @@
 <% include partials/header%>
-
-<h1>INDEX PAGE</h1>
-
-<%blogs.forEach((blog)=>{%>
-  <div>
-    <h2><%=blog.title%></h2>
-    <img style="width: 30%; height: 40%" src="/assets/<%=blog.image%>" alt="">
-    <span><%=blog.Date%></span>
-    <p><%-blog.body.substring(0,100)%>...</p>
-    <a href="/blogs/<%=blog._id%>">Read More</a>
+<div class="ui main text container" style="margin-bottom: 30px">
+  <div class="ui huge header"> Blogger App</div>
+  <div class="ui top attached segment">
+    <div class="ui divided items">
+      <%blogs.forEach((blog)=>{%>
+        <div class="item">
+          <div class="image">
+            <img style="width: 100%; height: 100%" src="/assets/<%=blog.image%>" alt="">
+          </div>
+          <div class="content">
+            <a class="header" href="/blogs/<%=blog._id%>"><%=blog.title%></a>
+            <div class="meta">
+              <span><%= blog.Date.toDateString() %></span>
+            </div>
+            <div class="description">
+              <p><%-blog.body.substring(0,100)%>...</p>
+            </div>
+            <div class="extra">
+              <a href="/blogs/<%=blog._id%>" class="ui basic violet button">
+                Read More
+                <i class="right chevron icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
   </div>
-<% }) %>
+</div>

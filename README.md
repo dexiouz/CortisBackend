@@ -18,7 +18,7 @@ To create something we need two routes. First we need the form route that shows 
 
 REST is just a convention or architecture for mapping our HHTP requests to CRUD functions.
 
-
+Express sanitizer removes scripts.
 
 
 
