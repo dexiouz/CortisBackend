@@ -37,7 +37,6 @@ let express     = require("express"),
         if(err){
           console.log("there was an error", err)
         } else {
-          // console.log(blogs)
           res.render("index", {blogs})
         }
       })
@@ -108,4 +107,4 @@ let express     = require("express"),
 
 
 
-    app.listen( 3000, () => console.log( "blog server is lisening "))
+    app.listen( 4000, () => console.log( "blog server is lisening "))
