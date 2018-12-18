@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost/reference_demo");
 // })
 
 
-// CREATE A POST AND REFERENCE IT TO A USER
+// // CREATE A POST AND REFERENCE IT TO A USER
 
 // Post.create({
 //   title: "A model of the sun",
@@ -33,4 +33,3 @@ User.findOne({ email: "person@gmail.com"}).populate( "posts" ).exec(( err, user 
   err ? console.log( err ) :
    console.log( user )
 })
-
