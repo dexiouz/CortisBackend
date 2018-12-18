@@ -11,13 +11,20 @@
       <%=campground.description%>
     </p>
 
-    <% campground.comments.forEach((comment) => { %>
+    <p>
+      <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>/comments/new">Add New Comment</a>
+      
+    </p>
+      
+      <% campground.comments.forEach((comment) => { %>
       <p>
         <strong>
           <%= comment.author %>
         </strong> --
         <%= comment.text %>
       </p>
+
+
       <% })  %>
   </div>
 

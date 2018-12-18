@@ -39,18 +39,11 @@ function seedDB() {
           text: "Thus an avenue to find exceeding pleasure",
           author: "chidera"
         }, ( err, comment ) => {
-          // err ? 
-          //   console.log( err ) :  
-          //     campground.comments.push( comment );
-          //     campground.save();
-          //     console.log( "created new comment" )
-          if( err ){
-            console.log( err )
-          } else {
-            campground.comments.push( comment );
-            campground.save();
-            console.log("created new campground")
-          }
+          err ? 
+            console.log( err ) :  
+              campground.comments.push( comment );
+              campground.save();
+              console.log( "created new comment" );
         });
       })
     })

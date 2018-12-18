@@ -1,14 +1,15 @@
 let express    = require("express"),
  app          = express(),
  mongoose     = require("mongoose"),
- bodyparser   = require( "body-parser" );
- Campground   = require( "./models/campground");
- seedDB       = require("./seeds")
+ bodyparser   = require( "body-parser" ),
+ Campground   = require( "./models/campground"),
+ Comment      = require( "./models/comment"),
+ seedDB       = require("./seeds");
 
 
 
 
- mongoose.connect("mongodb://localhost:/campDera3")
+ mongoose.connect("mongodb://localhost:/campDera4")
  app.use( bodyparser.urlencoded( { extended: true } ));
  app.use( express.static("public"));
  app.set("view engine", "ejs");
@@ -69,10 +70,32 @@ app.get("/campgrounds/:id", ( req, res) => {
 //=====================================
 // COMMENTS ROUTE
 //=====================================
-app.get( "/campgrounds/:id/comment/new", ( req, res ) => {
-  res.render("/comments/new")
+app.get( "/campgrounds/:id/comments/new", ( req, res ) => {
+  Campground.findById( req.params.id, ( err, campground ) => {
+    err ? 
+      console.log( err ) : 
+        res.render("comments/new", { campground })
+  });
+});
+
+app.post("/campgrounds/:id/comments", ( req, res ) => {
+  Campground.findById( req.params.id, ( err, campground) => {
+    if( err ){
+      console.log( err );
+      res.render("/campgrounds")
+    } else {
+      Comment.create( req.body.comment, ( err, comment ) => {
+        console.log(req.body.comment)
+        err ? 
+          console.log( err ) : 
+           campground.comments.push( comment );
+           campground.save();
+           res.redirect(`/campgrounds/${campground._id}`)
+      });
+    }
+  })
 })
 
 app.listen( 4000, ()=>{
   console.log( "The camp server has started" )
-})
+}) 
