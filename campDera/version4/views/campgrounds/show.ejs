@@ -1,4 +1,4 @@
-<% include partials/header%>
+<% include ../partials/header%>
 
   <div style="width: 30%; height: 40%;">
     <h1>
@@ -13,9 +13,12 @@
 
     <% campground.comments.forEach((comment) => { %>
       <p>
-        <strong><%= comment.author %></strong> -- <%= comment.text %>
+        <strong>
+          <%= comment.author %>
+        </strong> --
+        <%= comment.text %>
       </p>
-    <% })  %>
+      <% })  %>
   </div>
 
-  <% include partials/footer%>
+  <% include ../partials/footer%>

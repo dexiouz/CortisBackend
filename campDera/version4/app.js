@@ -24,7 +24,7 @@ app.get( '/campgrounds', ( req, res )=> {
     if(err){
       console.log( err )
     } else {
-      res.render( "index", { campgrounds: allCampgrounds })
+      res.render( "campgrounds/index", { campgrounds: allCampgrounds })
     }
   })
 });
@@ -51,7 +51,7 @@ let name            = req.body.name,
 
 // NEW -- SHOW FORM TO CREATE NEW CAMPGROUND
 app.get( "/campgrounds/new", ( req, res) => {
-  res.render("new")
+  res.render("campgrounds/new")
 });
 
 // SHOW A CAMPGROUND USING ITS ID
@@ -61,10 +61,17 @@ app.get("/campgrounds/:id", ( req, res) => {
       console.log( err)
     } else {
       console.log( foundCampground )
-      res.render("show", {campground: foundCampground})
+      res.render("campgrounds/show", {campground: foundCampground})
     }
   })
 }); 
+
+//=====================================
+// COMMENTS ROUTE
+//=====================================
+app.get( "/campgrounds/:id/comment/new", ( req, res ) => {
+  res.render("/comments/new")
+})
 
 app.listen( 4000, ()=>{
   console.log( "The camp server has started" )
