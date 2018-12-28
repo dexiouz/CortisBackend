@@ -64,6 +64,15 @@ app.get("/campgrounds/:id", ( req, res) => {
   })
 }); 
 
+
+
+//=================================
+// COMMENTS ROUTES
+// ================================
+app.get("/campgrounds/:id/comments/new", (req,res)=>{
+  
+})
+
 app.listen( 4000, ()=>{
   console.log( "The camp server has started" )
 })
