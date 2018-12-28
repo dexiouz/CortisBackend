@@ -1,36 +1,16 @@
 let express    = require("express"),
  app          = express(),
  mongoose     = require("mongoose"),
- bodyparser   = require( "body-parser" );
+ bodyparser   = require( "body-parser" ),
+ Campground   = require("./models/campground"),
+ seedDB       = require("./seeds");
 
-mongoose.connect("mongodb://localhost:/campDera")
+
+mongoose.connect("mongodb://localhost:/campDera3")
 app.use( bodyparser.urlencoded( { extended: true } ));
 app.use( express.static("public"));
 app.set("view engine", "ejs");
-
-// SETUP SCHEMA
-let campgroundSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  description: String
-})
-
-let Campground = mongoose.model("Campground", campgroundSchema );
-
-
-// Campground.create(
-//   {
-//     name: "Western camp", 
-//     image: '/assets/mbuntu-2.jpg',
-//     description: "This is a camp on the western side of Nigeria. It has a beautiful scene with lush vegetation."
-//   },function(err,camp){
-//     if(err){
-//       console.log(`${err}, There was an error`)
-//     } else {
-//       console.log("NEWLY CREATED CAMPGRIUND")
-//       console.log(camp)
-//     }
-//   })
+seedDB();
 
 
 app.get("/", ( req, res)=>{
@@ -75,7 +55,7 @@ app.get( "/campgrounds/new", ( req, res) => {
 
 // SHOW A CAMPGROUND USING ITS ID
 app.get("/campgrounds/:id", ( req, res) => {
-  Campground.findById( req.params.id, (err, foundCampground) => {
+  Campground.findById( req.params.id).populate("comments").exec((err, foundCampground) => {
     if(err){
       console.log( err)
     } else {

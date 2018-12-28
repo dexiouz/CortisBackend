@@ -8,8 +8,14 @@
     <img style="width: 100%; height: 100% " src="<%=campground.image%>">
 
     <p>
-      <%=campground.description%>
+      <%=campground.description %>
     </p>
+
+    <%campground.comments.forEach(comment =>{ %>
+      <p>
+        <strong> <%= comment.author %></strong> - <%=comment.text %>
+      </p>
+    <%}) %>
   </div>
 
   <% include partials/footer%>
