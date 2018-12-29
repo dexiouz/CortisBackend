@@ -1,15 +1,24 @@
 let
-  express = require("express");
-  mongoose = require("mongoose"),
-  app = express();
-
-
+  express               = require("express"),
+  mongoose              = require("mongoose"),
+  passport              = require("passport"),
+  bodyParser            = require("body-parser");
+  LocalStrategy         = require("passport-local"),
+  passportLocalMongoose = require("passport-local-mongoose");
+  
+ 
 mongoose.connect("mongodb://localhost/auth_demo"); 
 
+app.use(require("express-session")({
+  secret: "Chidera is a fine man",
+  resave: false,
+  saveUninitialized: false
+}))
 
-
-
-  app.set("view engine", "ejs")
+let app = express();
+app.set("view engine", "ejs");
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", ( req, res )=>{
   res.render("home")
