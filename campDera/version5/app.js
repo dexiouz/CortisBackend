@@ -11,6 +11,7 @@ mongoose.connect("mongodb://localhost:/campDera3")
 app.use( bodyparser.urlencoded( { extended: true } ));
 app.use( express.static("public"));
 app.set("view engine", "ejs");
+app.use(express.static(`${__dirname}/public`));
 seedDB();
 
 

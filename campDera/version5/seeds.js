@@ -6,17 +6,21 @@ data = [
   {
     name: "East Camp",
     image: '/assets/mbuntu-2.jpg',
-    description: "blah blah blah"
+    description:"Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin erat. Proin sagittis turpis semper purus.Phasellus ut consectetur mauris sodales. Donec vel ligula eu erat. Sed dui lectus, varius eget. Nam sed magnaurna in. Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin erat. Proin sagittis turpis semper purus. Phasellus ut consectetur mauris sodales. Donec vel ligula eu erat. Sed dui lectus, varius eget. Namsed magna urna in."
   },
   {
     name: "north Camp",
     image: '/assets/mbuntu-3.jpg',
-    description: "blah blah blah"
+    description:  "Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin erat. Proin sagittis turpis semper purus.Phasellus ut consectetur mauris sodales. Donec vel ligula eu erat. Sed dui lectus, varius eget. Nam sed magnaurna in. Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin erat. Proin sagittis turpis semper purus. Phasellus ut consectetur mauris sodales. Donec vel ligula eu erat. Sed dui lectus, varius eget. Namsed magna urna in."
   },
+ 
+
+
+
   {
     name: "west Camp",
     image: '/assets/mbuntu-4.jpg',
-    description: "blah blah blah"
+    description: "Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin erat. Proin sagittis turpis semper purus.Phasellus ut consectetur mauris sodales. Donec vel ligula eu erat. Sed dui lectus, varius eget. Nam sed magnaurna in. Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin erat. Proin sagittis turpis semper purus. Phasellus ut consectetur mauris sodales. Donec vel ligula eu erat. Sed dui lectus, varius eget. Namsed magna urna in."
   },
 ]
 function seedDB(){
