@@ -12,7 +12,7 @@ mongoose.connect("mongodb://localhost/auth_demo",{ useNewUrlParser: true });
 
 let app = express();
 app.set("view engine", "ejs");
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(require("express-session")({
   secret: "Chidera is a fine man",
   resave: false,
@@ -25,6 +25,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
+//===============
+// ROUTES
+//==============
+
 app.get("/", ( req, res )=>{
   res.render("home")
 });
@@ -33,6 +37,27 @@ app.get("/secret", ( req, res )=>{
   res.render("secret")
 });
 
+//Auth Routes
+
+//Show sign up form
+app.get("/register", ( req,res )=> {
+  res.render("register")
+})
+
+// handling user sign up
+app.post("/register", ( req, res )=>{
+  User.register(new User({username: req.body.username}), req.body.password, (err, user)=>{
+    if(err){
+      console.log(err)
+      return res.render("register");
+    }
+    passport.authenticate("local")(req,res, ()=>{
+      res.redirect("/secret")
+    })
+  })
+})
+
 app.listen( 4000, () => {
   console.log( "auth server running")
 })
+
