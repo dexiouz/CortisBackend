@@ -1,4 +1,5 @@
 let
+  User                  = require("./models/user")
   express               = require("express"),
   mongoose              = require("mongoose"),
   passport              = require("passport"),
@@ -7,18 +8,22 @@ let
   passportLocalMongoose = require("passport-local-mongoose");
   
  
-mongoose.connect("mongodb://localhost/auth_demo"); 
+mongoose.connect("mongodb://localhost/auth_demo",{ useNewUrlParser: true }); 
+
+let app = express();
+app.set("view engine", "ejs");
 
 app.use(require("express-session")({
   secret: "Chidera is a fine man",
   resave: false,
   saveUninitialized: false
 }))
-
-let app = express();
-app.set("view engine", "ejs");
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 app.get("/", ( req, res )=>{
   res.render("home")

@@ -31,3 +31,6 @@ User
 Photos, Comments etc
 
 A comment can be related or associated to a photo which is also associated to a User. 
+
+"passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser())" are for reading session, taking an encoded data from session and decoding it
