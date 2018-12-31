@@ -85,7 +85,7 @@ app.get("/campgrounds/:id", ( req, res) => {
 //=================================
 // COMMENTS ROUTES
 // ================================
-app.get("/campgrounds/:id/comments/new", (req,res)=>{
+app.get("/campgrounds/:id/comments/new", isLoggedIn,(req,res)=>{
   Campground.findById( req.params.id, ( err, campground )=>{
     if(err){
       console.log( err )
@@ -152,6 +152,19 @@ app.post("/login",passport.authenticate("local",
   }), (req,res)=>{
 });
 
+//logouit route
+app.get("/logout",(req,res)=>{
+  req.logout();
+  res.redirect("/campgrounds");
+});
+
+
+function isLoggedIn(req,res,next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect("/login")
+}
 app.listen( 3000, ()=>{
   console.log( "The camp server has started" )
 })
