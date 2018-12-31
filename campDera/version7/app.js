@@ -38,6 +38,9 @@ app.get("/", ( req, res)=>{
   res.render( "landing" )
 })
 
+//===============
+//CAMPGROUND ROUTES
+//================
 // INDEX -- SHOW ALL CAMPGROUNDS
 app.get( '/campgrounds', ( req, res )=> {
   // console.log(req.user)
@@ -54,8 +57,13 @@ app.get( '/campgrounds', ( req, res )=> {
   })
 });
 
+// NEW -- SHOW FORM TO CREATE NEW CAMPGROUND
+app.get( "/campgrounds/new",isLoggedIn, ( req, res) => {
+  res.render("campgrounds/new")
+});
+
 //CREATE -- ADD NEW CAMPGROUND TO DB
-app.post( '/campgrounds', ( req, res)=> {
+app.post( '/campgrounds',isLoggedIn, ( req, res)=> {
   // get data from form and add to newCamp object
 let name            = req.body.name,
    incomingImage    = req.body.image,
@@ -74,10 +82,6 @@ let name            = req.body.name,
   })
 });
 
-// NEW -- SHOW FORM TO CREATE NEW CAMPGROUND
-app.get( "/campgrounds/new", ( req, res) => {
-  res.render("campgrounds/new")
-});
 
 // SHOW A CAMPGROUND USING ITS ID
 app.get("/campgrounds/:id", ( req, res) => {
