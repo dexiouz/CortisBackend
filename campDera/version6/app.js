@@ -35,11 +35,17 @@ app.get("/", ( req, res)=>{
 
 // INDEX -- SHOW ALL CAMPGROUNDS
 app.get( '/campgrounds', ( req, res )=> {
+  console.log(req.user)
   Campground.find({}, function(err, allCampgrounds){
     if(err){
       console.log( err )
     } else {
-      res.render( "campgrounds/index", { campgrounds: allCampgrounds })
+      res.render( "campgrounds/index", 
+        { 
+          campgrounds: allCampgrounds, 
+          currentUser: req.user
+        })
+      // console.log(currentUser)
     }
   })
 });
@@ -95,7 +101,7 @@ app.get("/campgrounds/:id/comments/new", isLoggedIn,(req,res)=>{
   })
 });
 
-app.post("/campgrounds/:id/comments", ( req, res) => {
+app.post("/campgrounds/:id/comments",isLoggedIn, ( req, res) => {
   Campground.findById( req.params.id, ( err, campground )=>{
     if( err ){
       console.log(err);

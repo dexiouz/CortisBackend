@@ -1,5 +1,6 @@
 <% include ../partials/header %>
 
+<!-- <%= currentUser%> -->
   <div class="container">
 
     <header class="jumbotron">
@@ -11,7 +12,7 @@
         </p>
       </div>
     </header>
-
+<%=currentUser%>
     <div class="row text-center" style="display: flex; flex-wrap: wrap">
       <% campgrounds.forEach((camp)=>{ %>
         <div class="col-lg-3 col-md-4 col-sm-6" style="margin-bottom: .1rem; margin-top: .9rem">
