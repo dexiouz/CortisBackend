@@ -17,12 +17,12 @@ let
   indexRoutes      = require("./routes/index");
 
 
-mongoose.connect("mongodb://localhost:/campDera7",{ useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:/campDera8",{ useNewUrlParser: true })
 app.use( bodyparser.urlencoded( { extended: true } ));
 app.use( express.static("public"));
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
-seedDB();
+//seedDB(); //seed the database
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
