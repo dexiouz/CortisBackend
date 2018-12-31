@@ -137,8 +137,14 @@ app.post("/register", (req,res)=>{
       res.redirect("/campgrounds")
     })
   })
-})
+});
 
-app.listen( 4000, ()=>{
+//show login form
+app.get("/login", (req,res)=>{
+  res.render("/login")
+});
+
+
+app.listen( 3000, ()=>{
   console.log( "The camp server has started" )
 })
