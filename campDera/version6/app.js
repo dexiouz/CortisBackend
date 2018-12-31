@@ -29,13 +29,18 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//pass in an object to every route
+app.use((req,res,next)=>{
+  res.locals.currentUser = req.user;
+  next();
+})
 app.get("/", ( req, res)=>{
   res.render( "landing" )
 })
 
 // INDEX -- SHOW ALL CAMPGROUNDS
 app.get( '/campgrounds', ( req, res )=> {
-  console.log(req.user)
+  // console.log(req.user)
   Campground.find({}, function(err, allCampgrounds){
     if(err){
       console.log( err )
@@ -45,7 +50,6 @@ app.get( '/campgrounds', ( req, res )=> {
           campgrounds: allCampgrounds, 
           currentUser: req.user
         })
-      // console.log(currentUser)
     }
   })
 });
@@ -164,13 +168,16 @@ app.get("/logout",(req,res)=>{
   res.redirect("/campgrounds");
 });
 
-
+// isLoggedIn function
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated()){
     return next();
   }
   res.redirect("/login")
 }
+
+
+// port
 app.listen( 3000, ()=>{
   console.log( "The camp server has started" )
 })
