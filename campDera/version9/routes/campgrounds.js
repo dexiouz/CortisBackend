@@ -26,19 +26,26 @@ router.get( "/new",isLoggedIn, ( req, res) => {
 //CREATE -- ADD NEW CAMPGROUND TO DB
 router.post( '/',isLoggedIn, ( req, res)=> {
   // get data from form and add to newCamp object
-let name            = req.body.name,
+let 
+   name            = req.body.name,
    incomingImage    = req.body.image,
    image            = `/assets/${incomingImage}`,
    description      = req.body.description,
-   newCamp          = { name, image, description };
-  
+   author           = {
+     id: req.user._id,
+     username: req.user.username
+   },
+   newCamp          = { name, image, description,author  };
+   console.log(req.user,"hi")
   // create new camp ground and save to db
   Campground.create( newCamp, function( err, newlyCreated ){
     if(err){
       console.log(err)
     } else {
       // redirect back to campground page
+      console.log(newlyCreated)
       res.redirect("/campgrounds")
+      
     }
   })
 });
