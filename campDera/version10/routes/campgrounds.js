@@ -60,6 +60,18 @@ router.get("/:id", ( req, res) => {
   })
 }); 
 
+//EDIT CAMPGROUND ROUTE
+app.get("/:id/edit", (req, res) => {
+  Campground.findById(req.params.id, (err, foundCampground) => {
+    if(err){
+      res.redirect("/campgrounds")
+    } else {
+      res.render("campgrounds/edit", {campground: foundCampground})
+    }
+  })
+})
+//UPDATE CAMPGROUND ROUTE
+
 // isLoggedIn function
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated()){

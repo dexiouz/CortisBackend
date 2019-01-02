@@ -7,6 +7,7 @@ let
  LocalStrategy = require("passport-local"),
  Campground   = require("./models/campground"),
  Comment      = require("./models/comments"),
+ methodOverride = require("method-override"),
  User         = require("./models/user"),
  seedDB       = require("./seeds");
 
@@ -17,10 +18,11 @@ let
   indexRoutes      = require("./routes/index");
 
 
-mongoose.connect("mongodb://localhost:/campDera8",{ useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:/campDera10",{ useNewUrlParser: true })
 app.use( bodyparser.urlencoded( { extended: true } ));
 app.use( express.static("public"));
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 app.use(express.static(`${__dirname}/public`));
 //seedDB(); //seed the database
 
