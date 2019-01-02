@@ -4,6 +4,7 @@ let express = require("express"),
 
 // INDEX -- SHOW ALL CAMPGROUNDS
 router.get( '/', ( req, res )=> {
+  // console.log(req.user)
   Campground.find({}, function(err, allCampgrounds){
     if(err){
       console.log( err )
@@ -26,13 +27,15 @@ router.get( "/new",isLoggedIn, ( req, res) => {
 router.post( '/',isLoggedIn, ( req, res)=> {
   // get data from form and add to newCamp object
 let 
-   {name,image,description} = req.body,
-    author = {
+   name            = req.body.name,
+   incomingImage    = req.body.image,
+   image            = `/assets/${incomingImage}`,
+   description      = req.body.description,
+   author           = {
      id: req.user._id,
      username: req.user.username
-   };
-   image         = `/assets/${image}`;
-   let newCamp   = { name, image, description, author  };
+   },
+   newCamp          = { name, image, description, author  };
   // create new camp ground and save to db
   Campground.create( newCamp, function( err, newlyCreated ){
     if(err){
