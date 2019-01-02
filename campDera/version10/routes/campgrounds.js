@@ -61,7 +61,7 @@ router.get("/:id", ( req, res) => {
 }); 
 
 //EDIT CAMPGROUND ROUTE
-app.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", (req, res) => {
   Campground.findById(req.params.id, (err, foundCampground) => {
     if(err){
       res.redirect("/campgrounds")
@@ -71,7 +71,28 @@ app.get("/:id/edit", (req, res) => {
   })
 })
 //UPDATE CAMPGROUND ROUTE
+router.put("/:id", (req, res) => {
+  req.body.campground.image = `/assets/${req.body.campground.image}`
+  Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
+    if(err){
+      console.log(err)
+    } else {
+      console.log(updatedCampground)
+      res.redirect(`/campgrounds/${req.params.id}`)
+    }
+  })
+});
 
+// DSTROY CAMPGROUND ROUTE
+router.delete("/:id", (req, res) => {
+  Campground.findByIdAndRemove(req.params.id, (err) => {
+    if(err){
+      res.redirect("/campgrounds")
+    } else {
+      res.redirect("/campgrounds")
+    }
+  })
+})
 // isLoggedIn function
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated()){

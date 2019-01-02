@@ -13,3 +13,7 @@
 .ca_navbar ul li a {
   color: blue
 }
+
+#delete-form {
+  display: inline
+}
