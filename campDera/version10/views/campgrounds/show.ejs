@@ -46,6 +46,9 @@
                 >
                   Edit
                 </a>
+                <form id="delete-form"  action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                  <button class="btn btn-sm btn-danger"> Delete</button>
+                </form>
             </div>
           </div>
         <% }) %>
