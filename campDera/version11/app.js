@@ -42,6 +42,7 @@ passport.deserializeUser(User.deserializeUser());
 //pass in an object to every route
 app.use((req,res,next)=>{
   res.locals.currentUser = req.user;
+  res.locals.message     = req.flash("error");
   next();
 })
 
