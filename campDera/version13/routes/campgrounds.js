@@ -32,11 +32,12 @@ let
    incomingImage    = req.body.image,
    image            = `/assets/${incomingImage}`,
    description      = req.body.description,
+   price            = req.body.price,
    author           = {
      id: req.user._id,
      username: req.user.username
    },
-   newCamp          = { name, image, description, author  };
+   newCamp          = { name, image, description, author, price  };
   // create new camp ground and save to db
   Campground.create( newCamp, function( err, newlyCreated ){
     if(err){
