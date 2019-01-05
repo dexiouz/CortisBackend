@@ -18,7 +18,7 @@ let
   indexRoutes      = require("./routes/index");
 
 
-mongoose.connect("mongodb://localhost:/campDera11")
+mongoose.connect("mongodb://localhost:/campDera12")
 app.use( bodyparser.urlencoded( { extended: true } ));
 app.use( express.static("public"));
 app.set("view engine", "ejs");
