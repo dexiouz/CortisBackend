@@ -6,7 +6,7 @@ let
  passport     = require("passport"),
  LocalStrategy = require("passport-local"),
  Campground   = require("./models/campground"),
- Comment      = require("./models/comments"),
+ flash      = require("connect-flash"),
  methodOverride = require("method-override"),
  User         = require("./models/user"),
  seedDB       = require("./seeds");
